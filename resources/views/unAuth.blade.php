@@ -1,0 +1,3 @@
+   <div class="alert alert-danger">
+        <p>You are not authorized to access this page.</p>
+    </div>
