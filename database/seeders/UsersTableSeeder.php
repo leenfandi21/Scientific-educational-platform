@@ -16,7 +16,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        if (User::count() == 0) {
+     /*   if (User::count() == 0) {
             $role = Role::where('name', 'admin')->firstOrFail();
 
             User::create([
@@ -31,6 +31,6 @@ class UsersTableSeeder extends Seeder
                 'birthday'      => '1/1/1980',
                 'avatar'         => 'my_avatar'
             ]);
-        }
+        }*/
     }
 }

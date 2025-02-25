@@ -17,9 +17,6 @@ return new class extends Migration
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
             $table->longText("question_text");
-          /*  $table->bigInteger("grammer_id")->unsigned()->nullable();
-            $table->foreign("grammer_id")->references("id")
-            ->on("grammers")->onDelete("cascade")->nullable();*/
             $table->foreignId('grammer_id')->constrained('grammers')->nullable();
             $table->foreignId('exam_id')->constrained('exams')->cascadeOnDelete();
             $table->timestamps();

@@ -155,7 +155,7 @@ Route::prefix('levels')->group(function(){
     Route::get('/', [LevelController::class,'index'])->middleware(['role:user|admin']);
     Route::post('/',[LevelController::class,'store'])->middleware(['role:admin']);
     Route::get('/{level_id}',[LevelController::class,'show'])->middleware(['role:user|admin']);
-    Route::post('/{level_id}',[LevelControllerer::class,'updat'])->middleware(['role:admin']);
+    Route::post('/{level_id}',[LevelController::class,'updat'])->middleware(['role:admin']);
     Route::delete('/{level_id}',[LevelController::class,'destroy'])->middleware(['role:admin']);
 
 });

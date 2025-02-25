@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\level;
 use App\Models\Question;
 use Illuminate\Support\Facades\Schema;
-class User extends \TCG\Voyager\Models\User implements JWTSubject
+class User extends  Authenticatable implements JWTSubject
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -22,14 +22,10 @@ class User extends \TCG\Voyager\Models\User implements JWTSubject
      * @var array<int, string>
      */
     protected $fillable = [
-        'f_name',
-        's_name',
+        'name',
         'email',
         'password',
-        'phone_number',
-        'gender',
-        'birthday',
-        'avatar'
+       
     ];
 
     /**

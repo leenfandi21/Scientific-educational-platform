@@ -8,7 +8,7 @@ use Illuminate\Http\Response;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 class AdminAuthController extends Controller
 {
-    use AuthenticatesUsers;
+   // use AuthenticatesUsers;
     public function postLogin(Request $request){
         $this->validateLogin($request);
 

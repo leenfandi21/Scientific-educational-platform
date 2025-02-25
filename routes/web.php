@@ -3,15 +3,16 @@
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\MarkA1Controller;
-use App\Http\Controllers\PusherController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UploadFile;
 use App\Http\Controllers\NewTableController;
 use App\Http\Controllers\QuestionGrammerController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\AdminActionController;
-use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\GrammerController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AdminController;
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,12 +23,12 @@ use App\Http\Controllers\GrammerController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::view('/dashboard/{any}', 'app')->where('any', '.*');
+
 Route::get('/', function () {
     return view('welcome');
 });
-
-
+Auth::routes();
+Route::get('/{page}', [AdminController::class, 'index']);
 Route::group(['prefix' => 'admin'], function () {
 
    // Route::get('files',[UploadFile::class,'index']);
@@ -35,7 +36,7 @@ Route::group(['prefix' => 'admin'], function () {
     //Route::post('files', [UploadFile::class,'index']);
   //  Route::post('/login', [AdminAuthController::class, 'postLogin']);
     Route::get('/files', [UploadFile::class, 'index']);
-    Route::get('/chats', [PusherController::class, 'index']);
+    //Route::get('/chats', [PusherController::class, 'index']);
     Route::get('/course', [CourseController::class, 'index']);
    // Route::get('/course', [NewTableController::class, 'index']);
 
@@ -66,3 +67,12 @@ Route::post('/grammers', [GrammerController::class, 'storeView'])->name('grammer
 Route::get('/grammers/{grammer}/edit', [GrammerController::class, 'edit'])->name('grammers.edit');
 Route::put('/grammers/{grammer}', [GrammerController::class, 'update'])->name('grammers.update');
 Route::delete('/grammers/{grammer}', [GrammerController::class, 'destroy'])->name('grammers.destroy');
+
+
+
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
